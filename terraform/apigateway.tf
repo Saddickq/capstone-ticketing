@@ -1,6 +1,12 @@
 resource "aws_apigatewayv2_api" "api" {
   name          = "event-ticketing-api"
   protocol_type = "HTTP"
+
+  cors_configuration {
+    allow_origins = ["*"]
+    allow_methods = ["GET", "POST", "DELETE", "OPTIONS"]
+    allow_headers = ["Content-Type"]
+  }
 }
 
 resource "aws_apigatewayv2_stage" "default" {
