@@ -1,0 +1,14 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/build/*.zip
+
+
+# Python
+__pycache__/
+*.pyc
+tests/__pycache__/
+src/lambdas/register/__pycache__/
+
+.vscode/
