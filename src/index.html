@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stellar Tickets | Premium Event Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <main>
+      <header class="hero">
+        <div class="brand">
+          <span class="logo-icon">🎟️</span>
+          <span class="logo-text">Stellar Tickets</span>
+        </div>
+        <h1>Discover & Register for Premium Events</h1>
+        <p>Explore curated developer meetups, tech keynotes, and design workshops. Book your ticket in just a click.</p>
+      </header>
+
+      <section class="lookup-section">
+        <div class="lookup-card">
+          <h3>My Tickets</h3>
+          <p class="lookup-desc">Enter your email address to manage your reservations.</p>
+          <div class="lookup-box">
+            <div class="input-wrapper">
+              <input id="lookup-email" type="email" placeholder="e.g. alex@stellar.com" required autocomplete="email" />
+              <button onclick="lookup()" class="btn-lookup">Retrieve Tickets</button>
+            </div>
+          </div>
+        </div>
+        <div id="lookup-results" class="results-grid"></div>
+      </section>
+
+      <section class="events-section">
+        <div class="section-header">
+          <h2>Upcoming Events</h2>
+          <span class="count-badge" id="events-count">...</span>
+        </div>
+        <div id="events-list" class="events-grid">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <span>Discovering events...</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Native Registration Modal Dialog -->
+    <dialog id="register-dialog" closedby="any" aria-labelledby="modal-title">
+      <div class="modal-card">
+        <button class="close-btn" commandfor="register-dialog" command="close" aria-label="Close dialog">×</button>
+        <div class="modal-header">
+          <span class="ticket-stub-icon">🎟️</span>
+          <h3 id="modal-title">Complete Registration</h3>
+          <p id="modal-event-name" class="modal-event-name"></p>
+        </div>
+        <form id="reg-form" onsubmit="event.preventDefault(); register();">
+          <input type="hidden" id="reg-event-id" />
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input id="reg-name" type="text" placeholder="e.g. Alex Rivera" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input id="reg-email" type="email" placeholder="e.g. alex@stellar.com" required autocomplete="email" />
+          </div>
+          <button type="submit" class="btn-submit">Confirm Free Ticket</button>
+        </form>
+        <div id="reg-msg" class="message"></div>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
